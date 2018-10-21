@@ -1,0 +1,107 @@
+@import url( 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+@import "reset";
+
+body {
+  font-family: 'Roboto', sans-serif;
+  // background: purple;
+  box-sizing:border-box;
+}
+
+
+.head{
+  background: linear-gradient(45deg, rgba(82, 79, 79, 0.375) 0%, rgba(23, 23, 23, 0.8) 100%), url('https://hips.hearstapps.com/pop.h-cdn.co/assets/17/39/1600x995/gallery-1506522430-2049.jpg') no-repeat; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:70vh;
+
+
+
+.compName{
+  font-size: 2rem;
+  font-weight:200;
+  letter-spacing: .4rem;
+  position:absolute;
+  color:white;
+  margin-top:1.5rem;
+  margin-left: 3rem;
+
+}
+
+
+
+.rightArea{
+  float:right;
+  margin-right: 3rem;
+  margin-top: 2rem;
+ 
+  
+
+  .rightInfo li{
+    color:white;
+    font-size:1.2rem;
+    font-weight: 300;
+    display:inline-block;
+    margin-left: 2rem;
+    cursor:pointer;
+  
+   }
+
+  
+   
+
+   .two:hover ~ hr {
+    margin-left: 33.5%;
+  }
+  
+  .three:hover ~ hr {
+    margin-left: 58%;
+  }
+  
+  .four:hover ~ hr {
+    margin-left: 81.2%;
+  }
+
+
+
+
+
+   hr {
+    height: .25rem;
+    width: 20%;
+    margin: 0;
+    background: rgb(251, 218, 3);
+    border: none;
+    margin-top:.2rem;
+    margin-left: 1.5rem;
+    transition: .3s ease-in-out;
+   }
+ 
+
+  }
+
+  .movieTitle{
+    background: rgba(0, 0, 0, 0.224);
+    color:white;
+    font-size:2rem;
+    margin-left: 7rem;
+    margin-top: 14rem;
+    position: absolute;
+    padding: 2rem 5rem 4rem 2rem;
+    font-weight: 300;
+
+    .trailerBtn{
+      position:absolute;
+      margin-top: .5rem;
+      background: rgba(251, 218, 3, 0.573);
+      padding: .2rem;
+      color:white;
+      font-size: 1.5rem;
+      cursor:pointer;
+     
+    }
+  }
+}
+
+
