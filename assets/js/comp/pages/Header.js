@@ -1,5 +1,7 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
+import moviesData from '../../moviesData'
+
 
 export default class Header extends Component {
   constructor () {
@@ -7,7 +9,19 @@ export default class Header extends Component {
     this.state = {
      
     }
+    this.hitButton = this.hitButton.bind(this)
   }
+
+ hitButton = async() =>{
+   const query = 'Blade Runner'
+  if(query){
+    const search = new moviesData(query)
+
+    await search.getResults()
+
+    console.log(search.result)
+  }
+}
  
   render () {
     return (<div>
@@ -18,7 +32,7 @@ export default class Header extends Component {
             </div>
             <div className="rightArea">
               <ul className="rightInfo">
-                <li className="one"><a>Movies</a></li>
+                <li className="one"><a  onClick ={this.hitButton}>Movies</a></li>
                 <li className="two"><a>TV Shows</a></li>
                 <li className="three"><a>Login</a></li>
                 <li className="four"><a>Register</a></li>

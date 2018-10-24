@@ -8,7 +8,7 @@ const VENDOR_LIBS = [
 
 module.exports = {
   entry: {
-    comp: './assets/js/comp/App.js',
+    comp: ['babel-polyfill','./assets/js/comp/App.js'],
     vendor: VENDOR_LIBS
   },
   output: { filename: '[name].js',
