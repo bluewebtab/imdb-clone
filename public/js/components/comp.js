@@ -47,7 +47,7 @@ var moviesData = function () {
               case 5:
                 res = _context.sent;
 
-                this.result = res.data;
+                this.result = res.data.results;
                 // console.log(this.result);
                 _context.next = 12;
                 break;
@@ -90,7 +90,7 @@ var moviesData = function () {
               case 5:
                 res = _context2.sent;
 
-                this.result = res.data;
+                this.result = res.data.results;
                 // console.log(this.result);
                 _context2.next = 12;
                 break;

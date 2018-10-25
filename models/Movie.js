@@ -4,9 +4,14 @@ const Schema = mongoose.Schema
 
 //Create Schema 
 const MovieSchema = new Schema({
+
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users'
+  }, 
+  movie_id: {
+    type: String,
+    ref: 'movie'
   },
   
   movie: {
@@ -14,27 +19,37 @@ const MovieSchema = new Schema({
   },
   watchlist: [
     {
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
       movie_id: {
         
-          type:Schema.Types.ObjectId,
+          type:String,
           ref: 'movie'
       
     },
-    movie: {
+    movie_object: {
       type: String
     }
   }
   ],
   ratings: [
     {
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
        movie_id: {
-          type: Schema.Types.ObjectId,
+          type: String,
           ref: 'movie'
       
     },
-    movie: {
-      type:String
+
+    movie_object: {
+      type: String
     },
+    
     rating: {
       type: String
     }
@@ -42,11 +57,16 @@ const MovieSchema = new Schema({
   ],
   reviews: [
     {
-       user: {
-          type: Schema.Types.ObjectId,
-          ref: 'movie'
-      
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     },
+    movie_id: {
+      type: String,
+      ref: 'movie'
+  
+    },
+       
      headline: {
        type: String,
        required: true
@@ -61,6 +81,9 @@ const MovieSchema = new Schema({
      avatar: {
        type:String
      }, 
+     movie_object: {
+      type: String
+    },
      date: {
        type:Date,
        default: Date.now

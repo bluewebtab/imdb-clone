@@ -10,7 +10,7 @@ export default class moviesData{
     const key = '55235c76109068a112aaa3dcd3a08bda';
    try{ 
     const res = await axios(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${this.query}`)
-    this.result = res.data
+    this.result = res.data.results
     // console.log(this.result);
   } catch(error){
     alert(error);
@@ -22,7 +22,7 @@ async discoverMovies(){
   const key = '55235c76109068a112aaa3dcd3a08bda';
  try{ 
   const res = await axios(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`)
-  this.result = res.data
+  this.result = res.data.results
   // console.log(this.result);
 } catch(error){
   alert(error);
