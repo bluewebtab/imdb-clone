@@ -1,9 +1,9 @@
 {
-  "name": "oviizz",
+  "name": "moviizz",
   "version": "1.0.0",
   "description": "Moviizz",
   "main": "index.js",
-  "author": "Ronny",
+  "author": "Ronny G",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
