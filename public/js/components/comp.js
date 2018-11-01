@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 153:
+/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -132,11 +132,11 @@ exports.default = moviesData;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(97);
+var _react = __webpack_require__(74);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(99);
+var _reactDom = __webpack_require__(75);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -144,13 +144,15 @@ var _Header = __webpack_require__(250);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _moviesData = __webpack_require__(153);
+var _moviesData = __webpack_require__(101);
 
 var _moviesData2 = _interopRequireDefault(_moviesData);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _MovieSection = __webpack_require__(251);
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+var _MovieSection2 = _interopRequireDefault(_MovieSection);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -162,33 +164,9 @@ var App = function (_Component) {
   _inherits(App, _Component);
 
   function App() {
-    var _this2 = this;
-
     _classCallCheck(this, App);
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
-
-    _this.componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var search;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              search = new _moviesData2.default();
-              _context.next = 3;
-              return search.discoverMovies();
-
-            case 3:
-
-              console.log(search.result);
-
-            case 4:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, _this2);
-    }));
 
     _this.state = {};
     return _this;
@@ -200,7 +178,8 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_Header2.default, null)
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(_MovieSection2.default, null)
       );
     }
   }]);
@@ -226,15 +205,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(97);
+var _react = __webpack_require__(74);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(99);
+var _reactDom = __webpack_require__(75);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _moviesData = __webpack_require__(153);
+var _moviesData = __webpack_require__(101);
 
 var _moviesData2 = _interopRequireDefault(_moviesData);
 
@@ -381,7 +360,168 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 578:
+/***/ 251:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(74);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(75);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _moviesData = __webpack_require__(101);
+
+var _moviesData2 = _interopRequireDefault(_moviesData);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MovieSection = function (_Component) {
+  _inherits(MovieSection, _Component);
+
+  function MovieSection() {
+    var _this2 = this;
+
+    _classCallCheck(this, MovieSection);
+
+    var _this = _possibleConstructorReturn(this, (MovieSection.__proto__ || Object.getPrototypeOf(MovieSection)).call(this));
+
+    _this.hitButton = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+      var query, search;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              query = 'Blade Runner';
+
+              if (!query) {
+                _context.next = 6;
+                break;
+              }
+
+              search = new _moviesData2.default(query);
+              _context.next = 5;
+              return search.getResults();
+
+            case 5:
+
+              console.log(search.result);
+
+            case 6:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, _this2);
+    }));
+    _this.componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+      var search, newMovies;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              search = new _moviesData2.default();
+              _context2.next = 3;
+              return search.discoverMovies();
+
+            case 3:
+              console.log(search.result);
+              newMovies = search.result;
+
+              _this.setState({
+                movies: newMovies
+              });
+
+              console.log(_this.state);
+
+            case 7:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, _this2);
+    }));
+
+    _this.state = {
+      movies: ''
+
+    };
+    _this.hitButton = _this.hitButton.bind(_this);
+    _this.newMovies = _this.newMovies.bind(_this);
+    return _this;
+  }
+
+  _createClass(MovieSection, [{
+    key: 'newMovies',
+    value: function newMovies() {
+      var newMovies = Object.values(this.state.movies);
+      return newMovies.map(function (movie, index) {
+        return _react2.default.createElement(
+          'div',
+          { key: index },
+          _react2.default.createElement(
+            'h1',
+            null,
+            movie.title
+          )
+        );
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'section',
+        null,
+        _react2.default.createElement(
+          'section',
+          { id: 'movieSection', className: 'row center-xs' },
+          _react2.default.createElement(
+            'section',
+            { className: 'search-area col-xs-12' },
+            _react2.default.createElement('input', { type: 'text', name: 'search', onChange: this.props.change })
+          )
+        ),
+        _react2.default.createElement(
+          'section',
+          { className: 'col-xs-12' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            ' Movies Out Now'
+          ),
+          this.newMovies()
+        )
+      );
+    }
+  }]);
+
+  return MovieSection;
+}(_react.Component);
+
+exports.default = MovieSection;
+
+/***/ }),
+
+/***/ 579:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(230);
@@ -390,4 +530,4 @@ module.exports = __webpack_require__(229);
 
 /***/ })
 
-},[578]);
+},[579]);

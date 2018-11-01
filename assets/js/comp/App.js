@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
 import Header from './pages/Header'
 import moviesData from '../moviesData'
+import MovieSection from './pages/MovieSection';
 
 
 class App extends Component {
@@ -12,23 +13,15 @@ class App extends Component {
     }
   }
 
-  componentDidMount = async() =>{
-    const search = new moviesData()
-
-    await search.discoverMovies()
-
-    console.log(search.result)
-  }
+  
 
  
-
-
-
 
   
   render () {
     return (<div>
       <Header/>
+      <MovieSection />
     </div>)
   }
 }

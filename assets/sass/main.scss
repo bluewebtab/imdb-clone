@@ -1,6 +1,7 @@
 @import url( 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 @import "reset";
 
+
 body {
   font-family: 'Roboto', sans-serif;
   // background: purple;
@@ -100,6 +101,22 @@ body {
       font-size: 1.5rem;
       cursor:pointer;
      
+    }
+  }
+}
+
+#movieSection{
+  .search-area {
+    margin-top: 2rem;
+    input[type="text"] {
+      width: 50%;
+      background: transparent;
+      font-size: 2rem;
+      border: none;
+      border-bottom: 1px solid rgb(103, 102, 102);
+      font-weight: 100;
+      margin-bottom: 20px;
+      color: rgb(56, 56, 56);
     }
   }
 }
