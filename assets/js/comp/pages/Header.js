@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
 import moviesData from '../../moviesData'
+import { Link } from 'react-router-dom'
 
 
 export default class Header extends Component {
@@ -27,21 +28,28 @@ export default class Header extends Component {
     return (<div>
         <header className="head">
           <div className="navbar">
-            <div className="compName">
+            <Link to="/" className="compName">
+            
               Moviizz
-            </div>
+            </Link>
             <div className="rightArea">
               <ul className="rightInfo">
                 <li className="one"><a  onClick ={this.hitButton}>Movies</a></li>
-                <li className="two"><a>TV Shows</a></li>
-                <li className="three"><a>Login</a></li>
-                <li className="four"><a>Register</a></li>
+                <li className="two">
+                <a>TV Shows</a>
+                </li>
+                <li className="three">
+                <Link to="/login" className="linkButton">Login</Link>
+                </li>
+                <li className="four">
+                <Link to="/register" className="linkButton">Register</Link>
+                </li>
                 <hr />
               </ul>
             
             </div>
           </div>
-          <div className="movieTitle">
+          <div className=" movieTitle">
             <h3>Blade Runner 2049</h3>
             <a className="trailerBtn">Trailer</a>
           </div>

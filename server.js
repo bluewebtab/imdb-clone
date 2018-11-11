@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require('path')
+
 const bodyParser = require('body-parser')
 const passport = require('passport')
 
@@ -37,6 +39,12 @@ require('./config/passport')(passport)
 app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/movie', movie)
+
+app.use(express.static(__dirname + '/public'))
+
+app.get('*', function (request, response){
+  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
 
 const port = process.env.port || 5000;
 

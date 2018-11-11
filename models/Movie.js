@@ -34,7 +34,7 @@ const MovieSchema = new Schema({
     }
   }
   ],
-  ratings: [
+  likes: [
     {
     user: {
         type: Schema.Types.ObjectId,
@@ -47,10 +47,6 @@ const MovieSchema = new Schema({
     },
 
     movie_object: {
-      type: String
-    },
-    
-    rating: {
       type: String
     }
     }

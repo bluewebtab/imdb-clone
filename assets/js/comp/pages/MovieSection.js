@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
 import moviesData from '../../moviesData'
-
+import Header from './Header'
 
 export default class MovieSection extends Component {
   constructor () {
@@ -44,10 +44,12 @@ componentDidMount = async() => {
   const newMovies = Object.values(this.state.movies)
    return newMovies.map((movie, index) => {
      return (
-       <div key={index}>
-         <h1>{movie.title}</h1>
-
-       </div>
+       
+        <li key={index} className="singleMovie">
+         <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
+         
+        </li>
+       
      )
    })
 
@@ -57,20 +59,29 @@ componentDidMount = async() => {
 
  
   render () {
-    return (<section>
-      <section id="movieSection" className="row center-xs">
+    return (<div>
+      <Header/>
+      <section id="movieSection">
+      <section  className="row center-xs">
         <section className="search-area col-xs-12">
           <input type="text" name="search" onChange={this.props.change} />
         </section>
         </section>
 
         <section className="col-xs-12">
-          <h1> Movies Out Now</h1>
+          
+          <h1 className="popularTitle col-xs-3"> What's Popular Now</h1>
+              
+        <div className="row center-xs">
+          <ul className="moviesArea">
           {this.newMovies()}
+          </ul>
+          </div>
         </section>
        
      
       </section>
+      </div>
     )
   }
 }
