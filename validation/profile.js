@@ -12,9 +12,25 @@ module.exports = function validateProfileInput(data){
     errors.handle = 'Handle needs to be between 2 and 40 characters';
   }
 
+  if(!Validator.isLength(data.bio, {min: 10, max: 100})){
+    errors.bio = 'Bio needs to be between 10 and 100 characters';
+  }
+
   if(Validator.isEmpty(data.handle)){
     errors.handle = 'Profile handle is required';
   }
+
+  if(Validator.isEmpty(data.location)){
+    errors.location = 'Profile location is required';
+  }
+
+  if(Validator.isEmpty(data.bio)){
+    errors.bio = 'Profile bio is required';
+  }
+
+  
+  
+
 
 
 

@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux';
+import classnames from 'classnames';
+
+import {loginUser} from '../actions/authActions';
 import ReactDOM from 'react-dom'
 import TextFieldGroup from '../common/TextFieldGroup'; 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
- export default class Login extends Component {
+ class Login extends Component {
   constructor(){
     super();
     this.state = {
@@ -19,23 +24,40 @@ import { Link } from 'react-router-dom'
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount(){
+    if(this.props.auth.isAuthenticated){
+      this.props.history.push('/');
+    }
+  }
+
   onChange(e){
     this.setState({[e.target.name]: e.target.value})
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.auth.isAuthenticated){
+      this.props.history.push('/');
+    }
+
+    if(nextProps.errors){
+      this.setState({errors: nextProps.errors})
+    }
+  }
+
   onSubmit(e){
     e.preventDefault();
-    const user = {
+    const userData = {
      
       email: this.state.email,
       password: this.state.password,
       
 
     }
-    console.log(user)
+    this.props.loginUser(userData);
   }
 
   render() {
+    const {errors} = this.state;
     return (
         <div className="row">
           <div className="left-split col-xs-6">
@@ -49,29 +71,28 @@ import { Link } from 'react-router-dom'
             <Link to="/" className="display-4 ">Movizz</Link>
 
               <h1 className="display-5">Sign in to your account</h1>
-              
               <form onSubmit={this.onSubmit}>
+
                 <div className="all-forms">
+                  <h1 className="display-6 start-xs">Email</h1>
+                   <TextFieldGroup
+                    name="email"
+                    type="email"
+                    value={this.state.email}
+                    onChange={this.onChange}
+                    error={errors.email}
+                    />
+
+              
+                    <h1 className="display-6 start-xs">Password</h1>
+                    <TextFieldGroup
+                     name="password"
+                     type="password"
+                     value={this.state.password}
+                     onChange={this.onChange}
+                     error={errors.password}
+                     />
                 
-                <div className="form-group start-xs">
-                  <h1 className="display-6">Email</h1>
-                  <input 
-                  type="email"
-                  className="form-control" 
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                   />
-                </div>
-                <div className="form-group start-xs">
-                  <h1 className="display-6">Password</h1>
-                  <input
-                   type="password"
-                   className="form-control form-control-lg"
-                   value={this.state.password}
-                   onChange={this.onChange}
-                   name="password" />
-                </div>
                 
                 <input 
                 type="submit"
@@ -94,4 +115,16 @@ import { Link } from 'react-router-dom'
   }
 }
 
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
 
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+})
+
+export default connect(mapStateToProps, {loginUser})(Login);

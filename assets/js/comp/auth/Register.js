@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import classnames from 'classnames';
 import {connect} from 'react-redux';
 import {registerUser} from '../actions/authActions'
+import TextFieldGroup from '../common/TextFieldGroup'
 
 class Register extends Component {
   constructor(){
@@ -22,6 +23,11 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.errors){
+      this.setState({errors: nextProps.errors})
+    }
+  }
 
   onChange(e){
     this.setState({[e.target.name]: e.target.value})
@@ -37,11 +43,8 @@ class Register extends Component {
 
     };
 
-    this.props.registerUser(newUser)
+    this.props.registerUser(newUser, this.props.history)
 
-    // axios.post('/api/users/register', newUser)
-    //   .then(res => console.log(res.data))
-    //   .catch(err => this.setState({errors: err.response.data}))
   }
   
 
@@ -49,7 +52,6 @@ class Register extends Component {
 
     const {errors} = this.state;
 
-    const {user} = this.props.auth;
 
     return (
       <div className="row">
@@ -67,61 +69,43 @@ class Register extends Component {
                 
                 <form noValidate onSubmit={this.onSubmit}>
                   <div className="all-forms">
-                  <div className="form-group start-xs">
-                    <h1 className="display-6 ">Name</h1>
-                    <input
-                     type="text"
-                     className={classnames('form-control', {
-                       'is-invalid': errors.name
-                     })}
+                  <h1 className="display-6 start-xs">Name</h1>
+                    <TextFieldGroup
                      name="name"
                      value={this.state.name}
                      onChange={this.onChange}
-                      />
-                      {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
-                  </div>
-                  <div className="form-group start-xs">
-                    <h1 className="display-6">Email</h1>
-                    <input 
-                    type="email"
-                    className={classnames('form-control', {
-                      'is-invalid': errors.email
-                    })}
-                    
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
+                     error={errors.name}
                      />
-                     {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-
-                  </div>
-                  <div className="form-group start-xs">
-                    <h1 className="display-6">Password</h1>
-                    <input
-                     type="password"
-                     className={classnames('form-control', {
-                      'is-invalid': errors.email
-                    })}
-                     value={this.state.password}
+                  
+                     <h1 className="display-6 start-xs">Email</h1>
+                    <TextFieldGroup
+                     name="email"
+                     type="email"
+                     value={this.state.email}
                      onChange={this.onChange}
-                     name="password"
+                     error={errors.email}
+                     info="This site uses Gravatar, so if you want a profile picture use a Gravatar email"
+                     />
+                  
+                     <h1 className="display-6 start-xs">Password</h1>
+                     <TextFieldGroup
+                      name="password"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.onChange}
+                      error={errors.password}
                       />
-                      {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
 
-                  </div>
-                  <div className="form-group start-xs">
-                    <h1 className="display-6">Confirm password</h1>
-                    <input 
-                    type="password"
-                    className={classnames('form-control', {
-                      'is-invalid': errors.password2
-                    })}
-                    value={this.state.password2}
-                    onChange={this.onChange}
-                    name="password2" />
-                    {errors.password2 && (<div className="invalid-feedback">{errors.password2}</div>)}
-
-                  </div>
+                     <h1 className="display-6 start-xs">Confirm password</h1>
+                     <TextFieldGroup
+                      name="password2"
+                      type="password"
+                      value={this.state.password2}
+                      onChange={this.onChange}
+                      error={errors.password2}
+                      />
+                    
+                  
                   <input 
                   type="submit"
                   className="btn btn-block" />
@@ -141,12 +125,14 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 }
 
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  errors: state.errors
 })
 
-export default connect(mapStateToProps, {registerUser})(Register);
+export default connect(mapStateToProps, {registerUser})(withRouter(Register));

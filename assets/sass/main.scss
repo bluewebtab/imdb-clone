@@ -43,19 +43,88 @@ body {
   margin-top: 2rem;
  
   
-
-  .rightInfo li{
-    color:white;
-    font-size:1.2rem;
-    font-weight: 300;
-    display:inline-block;
-    margin-left: 2rem;
-    cursor:pointer;
   
-   }
+  .rightInfo {
+    
+    li{
+        color:white;
+        font-size:1.2rem;
+        font-weight: 300;
+        display:inline-block;
+        margin-left: 2rem;
+        cursor:pointer;
+      }
+
+      .linkButton{
+       text-decoration:none;
+       color:white;
+       transition: all 1s ease-in-out;
+
+        .rounded-circle{
+          border-radius: 50%;
+          margin-bottom: -.4rem;
+      
+          }
+
+          .sub-menu{
+            opacity:0;
+            position: absolute;
+            
+            background: rgb(45, 49, 77);
+            right: 1.5rem;
+            padding-top:.5rem;
+            top:3.7rem;
+            border-radius: 5px;
+            transition: all .5s ease-in-out;
+            li{
+              display:block;
+              margin-bottom: .5rem;
+              margin-left:1rem;
+              margin-right:.5rem;
+              
+              
+            }
+            .sub-link{
+              a{
+                text-decoration:none;
+                color:white;
+                &:hover{
+                  color: rgb(161, 160, 160)
+                }
+              }
+            }
+
+            .sub-link-two{
+             a{
+              &:hover{
+                color: rgb(161, 160, 160)
+              }
+             }
+            }
+            
+          }
+      &:focus .sub-menu,
+      &:focus-within .sub-menu,
+      &:hover .sub-menu{
+       opacity:1;
+       
+
+      }
+      
+    }
+      
+    
+  
+    
+
+  
+}
+
 
   
    
+  
+  
 
    .two:hover ~ hr {
     margin-left: 33.5%;
@@ -71,10 +140,23 @@ body {
 
 
 
-  .linkButton{
-    text-decoration: none;
-    color:white;
+  .oneAuth ~ hr {
+    margin-left: 13%;
   }
+  
+  .twoAuth:hover ~ hr {
+    margin-left: 52%;
+  }
+  
+  .threeAuth:hover ~ hr {
+    margin-left: 81.2%;
+  }
+
+
+
+
+
+  
 
 
    hr {
@@ -92,27 +174,28 @@ body {
   }
 
   .movieTitle{
-    background: rgba(0, 0, 0, 0.224);
     color:white;
-    font-size:2rem;
-    margin-left: 7rem;
-    margin-top: 14rem;
+    font-size:1.5rem;
+    margin-left: 1.5rem;
+    margin-top: 20rem;
     position: absolute;
     padding: 2rem 5rem 4rem 2rem;
     font-weight: 300;
 
-    .trailerBtn{
-      position:absolute;
-      margin-top: .5rem;
-      background: rgba(255, 102, 0, 0.573);
-      padding: .2rem;
-      color:white;
-      font-size: 1.5rem;
-      cursor:pointer;
+    // .trailerBtn{
+    //   position:absolute;
+    //   margin-top: .5rem;
+    //   background: rgba(255, 102, 0, 0.573);
+    //   padding: .2rem;
+    //   color:white;
+    //   font-size: 1.5rem;
+    //   cursor:pointer;
      
-    }
+    // }
   }
 }
+
+
 
 
 
@@ -120,7 +203,7 @@ body {
 #movieSection{
   background:rgb(29, 29, 29);
   .search-area {
-
+    
     margin-top: 2rem;
     input[type="text"] {
       font-weight: 100;
@@ -133,6 +216,25 @@ body {
       margin-bottom: 20px;
       color: rgb(112, 111, 111);
     }
+    
+  }
+
+  .searchButton{
+    margin-top:1rem;
+    background: transparent;
+    border-radius: 2px;
+    padding: .2rem 1rem;
+    
+    font-size:2rem;
+    color: rgb(255, 145, 0);
+    cursor:pointer;
+
+    &:hover,
+    &:focus {
+      color: white;
+      transition: all 300ms ease-in-out;
+    }
+  
   }
 
 
@@ -141,6 +243,11 @@ body {
     font-size: 2rem;
     font-weight: 500;
     color: rgb(90, 90, 90);
+  }
+
+  .noResults{
+    font-size: 2rem;
+    color: white;
   }
   
   .moviesArea{
@@ -206,7 +313,7 @@ body {
     }
 
     .all-forms{
-
+      max-width: 20rem;
       .is-invalid{
        
         border:1px solid white !important;
@@ -232,6 +339,18 @@ body {
         
         
         color: rgb(112, 111, 111);
+      }
+
+      .form-text{
+        color:white;
+        display:block;
+        position:relative;
+        text-align:center;
+       
+        
+        
+        
+        
       }
     }
 
@@ -260,8 +379,377 @@ body {
   
   }
 
+.profilePage{
+  background: #1d1d1d;
+  
+  .profile-head{
+    height: 20vh;
+    .compName{
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: .4rem;
+    position:absolute;
+    color: #4D6BA4;
+    margin-top:1.5rem;
+    margin-left: 3rem;
+    text-decoration:none;
+  
+  }
+  
+  
+  
+  .rightArea{
+    float:right;
+    margin-right: 3rem;
+    margin-top: 2rem;
+   
+    
+    
+    .rightInfo {
+      
+      li{
+          color:#4D6BA4;
+          font-size:1.2rem;
+          font-weight: 300;
+          display:inline-block;
+          margin-left: 2rem;
+          cursor:pointer;
+        }
+  
+        .linkButton{
+         text-decoration:none;
+         color:white;
+         transition: all 1s ease-in-out;
+  
+          .rounded-circle{
+            border-radius: 50%;
+            margin-bottom: -.4rem;
+        
+            }
+  
+            .sub-menu{
+              opacity:0;
+              position: absolute;
+              
+              background: rgb(45, 49, 77);
+              right: 1.5rem;
+              padding-top:.5rem;
+              top:3.7rem;
+              border-radius: 5px;
+              transition: all .5s ease-in-out;
+              li{
+                display:block;
+                margin-bottom: .5rem;
+                margin-left:1rem;
+                margin-right:.5rem;
+                
+                
+              }
+              .sub-link{
+                a{
+                  text-decoration:none;
+                  color:white;
+                  &:hover{
+                    color: rgb(161, 160, 160)
+                  }
+                }
+              }
+  
+              .sub-link-two{
+               a{
+                 color:white;
+                &:hover{
+                  color: rgb(161, 160, 160)
+                }
+               }
+              }
+              
+            }
+        &:focus .sub-menu,
+        &:focus-within .sub-menu,
+        &:hover .sub-menu{
+         opacity:1;
+         
+  
+        }
+        
+      }
+        
+      
+    
+      
+  
+    
+  }
+  
+  
+    
+     
+    
+    
+  
+     .two:hover ~ hr {
+      margin-left: 33.5%;
+    }
+    
+    .three:hover ~ hr {
+      margin-left: 58%;
+    }
+    
+    .four:hover ~ hr {
+      margin-left: 81.2%;
+    }
+  
+  
+  
+    .oneAuth ~ hr {
+      margin-left: 13%;
+    }
+    
+    .twoAuth:hover ~ hr {
+      margin-left: 52%;
+    }
+    
+    .threeAuth:hover ~ hr {
+      margin-left: 81.2%;
+    }
+  
+  
+  
+  
+  
+    
+  
+  
+     hr {
+      height: .25rem;
+      width: 20%;
+      margin: 0;
+      background: rgba(255, 102, 0, 0.573);
+      border: none;
+      margin-top:.2rem;
+      margin-left: 1.5rem;
+      transition: .3s ease-in-out;
+     }
+   
+  
+    }
+
+  
+  
+    
+      
+    
+  }
+
+  .profile-information{
+    height: 80vh;
+    
+
+    .profileData{
+       margin-left: 10rem;
+      
+      }
+    
+    .profileInfoName{
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: grey;
+      
+    }
+    .profileWarning{
+      color:#4D6BA4;
+    }
+
+    .createProfileButton{
+      text-decoration:none;
+      background-color: rgb(255, 102, 0);
+      border-radius: 5px;
+      color:white;
+      padding: .5rem;
+      position: absolute;
+      margin-top: 1rem;
+      
+    }
+
+    .editHandle{
+      text-decoration:none;
+      color: #4D6BA4;
+    }
+
+    .editProfileButton{
+      text-decoration:none;
+      background-color: rgb(255, 102, 0);
+      border-radius: 5px;
+      color:white;
+      padding: .5rem;
+      position: absolute;
+      
+    }
+
+    .deleteProfileButton{
+      text-decoration:none;
+      background-color: red;
+      border-radius: 5px;
+      border-color:transparent;
+      color:white;
+      padding: .5rem;
+      margin-left: 8rem;
+    }
+
+    .profile-items{
+      background: #1d1d1d;
+      margin-top:4rem;
+      height: 60rem;
+      .watchlist-profile{
+        margin: 1rem;
+        padding: 1rem;
+        height: 25%;
+        border: 1px solid orangered;
+
+        .profileListTitle{
+          font-size: 2rem;
+          color: #f60;
+        }
+        
+      }
+      .likes-profile{
+        margin: 1rem;
+        padding:1rem;
+        height: 25%;
+        border: 1px solid orangered;
+        .profileListTitle{
+          font-size: 2rem;
+          color: #f60;
+        }
+
+      }
+      .reviews-profile{
+        margin: 1rem;
+        padding: 1rem;
+        height: 25%;
+        border: 1px solid orangered;
+        .profileListTitle{
+          font-size: 2rem;
+          color: #f60;
+        }
+      }
+    }
+
+  
+  }
+  
+}
+
+.create-background{
+  background-color: #1d1d1d;
+  width: auto;
+  height: 40rem;
+.create-profile {
+  margin-top: 3rem;
+
+  
+
+  .createProfileTitle{
+    font-size: 3rem;
+    padding-bottom: 1rem;
+    color:white;
+  }
+
+  .createProfileInfo{
+    color:white;
+  }
+
+  .display-4{
+    font-weight:300;
+    font-size:2rem;
+    padding: 1rem;
+    color:#4D6BA4;
+    text-decoration:none;
+  }
+
+  .display-5{
+    font-weight:500;
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: rgb(90, 90, 90);
+  }
+
+  .display-6{
+    font-weight:500;
+    font-size: 1.5rem;
+    color: orange;
+    margin-top: .5rem;
+    margin-bottom:.5rem;
+  }
+
+  .all-forms{
+    max-width: 20rem;
+    .is-invalid{
+     
+      border:1px solid white !important;
+    
+      
+      
+        
+    }
+
+    .invalid-feedback{
+      color:white;
+      font-weight: 300;
+    }
+    
+    .form-control {
+      font-weight: 300;
+      height:2rem;
+      width: 20rem;
+      background: transparent;
+      font-size: 1.5rem;
+      border-radius:5px;
+      border:1px solid grey;
+      
+      
+      color: rgb(112, 111, 111);
+    }
+
+    .form-text{
+      color:white;
+      display:block;
+      position:relative;
+      text-align:center;
+     
+      
+      
+      
+      
+    }
+  }
 
 
+
+  
+  .btn-block{
+    margin-top:1rem;
+    background: transparent;
+    border-radius: 2px;
+    padding: 1rem 2rem;
+    border: 1px solid rgb(255, 145, 0);
+    font-size:1rem;
+    color: rgb(255, 145, 0);
+    cursor:pointer;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      outline: 0;
+      background: rgb(255, 145, 0);
+      transition: background 300ms ease-in-out;
+    }
+  
+  }
+
+  }
+}
 
 
 

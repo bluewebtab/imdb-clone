@@ -1,20 +1,30 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
-import moviesData from '../../moviesData'
+import moviesData from '../../../moviesData'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {logoutUser} from '../actions/authActions'
-import {clearCurrentProfile} from '../actions/profileActions'
- class Header extends Component {
+import {logoutUser} from '../../actions/authActions'
+import {clearCurrentProfile} from '../../actions/profileActions'
+ class MovieHeader extends Component {
   constructor () {
     super()
     this.state = {
      
     }
+    this.hitButton = this.hitButton.bind(this)
   }
 
- 
+ hitButton = async() =>{
+   const query = 'Blade Runner'
+  if(query){
+    const search = new moviesData(query)
+
+    await search.getResults()
+
+    console.log(search.result)
+  }
+}
 
   onLogoutClick(e){
     e.preventDefault();
@@ -28,7 +38,7 @@ import {clearCurrentProfile} from '../actions/profileActions'
 
     const authLinks = (
       <ul className="rightInfo">
-          <li className="oneAuth"><a>Movies</a></li>
+          <li className="oneAuth"><a  onClick ={this.hitButton}>Movies</a></li>
           <li className="twoAuth">
           <a>TV Shows</a>
           </li>
@@ -101,7 +111,7 @@ import {clearCurrentProfile} from '../actions/profileActions'
   }
 }
 
-Header.propTypes = {
+MovieHeader.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 }
@@ -111,4 +121,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, {logoutUser, clearCurrentProfile})(Header);
+export default connect(mapStateToProps, {logoutUser, clearCurrentProfile})(MovieHeader);
