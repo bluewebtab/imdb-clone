@@ -9,6 +9,7 @@ import store from './store';
 import { getCurrentProfile, clearCurrentProfile } from './actions/profileActions';
 
 import PrivateRoute from '../comp/common/PrivateRoute'
+import PropTypes from 'prop-types';
 
 // import Header from './pages/Header'
 import moviesData from '../moviesData';
@@ -68,7 +69,6 @@ class App extends Component {
                   <Route exact path='/' component = {MovieSection} />
                   <Route exact path= '/register' component={Register} />
                   <Route exact path='/login' component={Login} />
-                  <Route exact path='/movie/:movie-name' component={MovieProfile} />
 
 
                   <Switch>
@@ -80,6 +80,10 @@ class App extends Component {
                   <Switch>
                   <PrivateRoute exact path='/edit-profile' component={EditProfile} />
                   </Switch>
+                  <Switch>
+                  <Route exact path='/:movieName' component={MovieProfile} />
+
+                  </Switch>
                   
               </div>
         </BrowserRouter>
@@ -87,6 +91,8 @@ class App extends Component {
     )
   }
 }
+
+
 
 const app = document.getElementById('app')
 

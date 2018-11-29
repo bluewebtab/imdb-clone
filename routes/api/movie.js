@@ -10,15 +10,14 @@ const Movie = require('../../models/Movie')
 const Profile = require('../../models/Profile')
 
 const validatePostInput = require('../../validation/movies');
-
-
-
 router.get('/:id', (req,res)=>{
    Movie.findById(req.params.id)
   
   .then(movie => res.json(movie))
   .catch(err => res.status(404).json({nomoviesfound: 'No movies found'}))
 })
+
+
 
 
 

@@ -1,6 +1,121 @@
 webpackJsonp([0],{
 
-/***/ 173:
+/***/ 174:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.pickedMovie = undefined;
+exports.getTrendingMovies = getTrendingMovies;
+exports.topRatedMovies = topRatedMovies;
+
+var _axios = __webpack_require__(79);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _moviesData = __webpack_require__(81);
+
+var _moviesData2 = _interopRequireDefault(_moviesData);
+
+var _types = __webpack_require__(55);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function getTrendingMovies() {
+  var _this = this;
+
+  return function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
+      var search, goodMovies;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              search = new _moviesData2.default();
+              _context.next = 3;
+              return search.discoverMovies();
+
+            case 3:
+              console.log(search.result);
+              goodMovies = search.result;
+
+
+              dispatch({
+                type: _types.GET_TRENDING_MOVIES,
+                payload: goodMovies
+              });
+
+            case 6:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, _this);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+}
+
+function topRatedMovies() {
+  var _this2 = this;
+
+  return function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch) {
+      var search, goodMovies;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              search = new _moviesData2.default();
+              _context2.next = 3;
+              return search.topRatedMovies();
+
+            case 3:
+              console.log(search.result);
+              goodMovies = search.result;
+
+
+              dispatch({
+                type: _types.TOP_RATED_MOVIES,
+                payload: goodMovies
+              });
+
+            case 6:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, _this2);
+    }));
+
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+}
+
+var pickedMovie = exports.pickedMovie = function pickedMovie(movie) {
+  return function (dispatch) {
+
+    dispatch({
+      type: _types.PICKED_MOVIE,
+      payload: movie
+    });
+  };
+};
+
+/***/ }),
+
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,7 +125,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -18,7 +133,7 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = __webpack_require__(80);
+var _classnames = __webpack_require__(46);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -80,7 +195,7 @@ exports.default = SelectListGroup;
 
 /***/ }),
 
-/***/ 174:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -90,7 +205,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -98,7 +213,7 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = __webpack_require__(80);
+var _classnames = __webpack_require__(46);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -152,7 +267,7 @@ exports.default = TextAreaFieldGroup;
 
 /***/ }),
 
-/***/ 175:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -164,15 +279,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(53);
+var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _moviesData = __webpack_require__(79);
+var _moviesData = __webpack_require__(81);
 
 var _moviesData2 = _interopRequireDefault(_moviesData);
 
@@ -182,11 +297,11 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
-var _authActions = __webpack_require__(78);
+var _authActions = __webpack_require__(80);
 
-var _profileActions = __webpack_require__(67);
+var _profileActions = __webpack_require__(68);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -363,7 +478,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { logoutUser: _authA
 
 /***/ }),
 
-/***/ 176:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -373,7 +488,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _axios = __webpack_require__(77);
+var _axios = __webpack_require__(79);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -393,7 +508,7 @@ exports.default = setAuthToken;
 
 /***/ }),
 
-/***/ 177:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -413,7 +528,7 @@ exports.default = isEmpty;
 
 /***/ }),
 
-/***/ 260:
+/***/ 263:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -421,67 +536,71 @@ exports.default = isEmpty;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(31);
 
-var _jwtDecode = __webpack_require__(217);
+var _jwtDecode = __webpack_require__(220);
 
 var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
 
-var _setAuthToken = __webpack_require__(176);
+var _setAuthToken = __webpack_require__(178);
 
 var _setAuthToken2 = _interopRequireDefault(_setAuthToken);
 
-var _reactDom = __webpack_require__(53);
+var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _authActions = __webpack_require__(78);
+var _authActions = __webpack_require__(80);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
-var _store = __webpack_require__(297);
+var _store = __webpack_require__(299);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _profileActions = __webpack_require__(67);
+var _profileActions = __webpack_require__(68);
 
-var _PrivateRoute = __webpack_require__(282);
+var _PrivateRoute = __webpack_require__(284);
 
 var _PrivateRoute2 = _interopRequireDefault(_PrivateRoute);
 
-var _moviesData = __webpack_require__(79);
+var _propTypes = __webpack_require__(10);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _moviesData = __webpack_require__(81);
 
 var _moviesData2 = _interopRequireDefault(_moviesData);
 
-var _Register = __webpack_require__(281);
+var _Register = __webpack_require__(283);
 
 var _Register2 = _interopRequireDefault(_Register);
 
-var _Login = __webpack_require__(280);
+var _Login = __webpack_require__(282);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _MovieSection = __webpack_require__(286);
+var _MovieSection = __webpack_require__(288);
 
 var _MovieSection2 = _interopRequireDefault(_MovieSection);
 
-var _ProfilePage = __webpack_require__(287);
+var _ProfilePage = __webpack_require__(289);
 
 var _ProfilePage2 = _interopRequireDefault(_ProfilePage);
 
-var _CreateProfile = __webpack_require__(283);
+var _CreateProfile = __webpack_require__(285);
 
 var _CreateProfile2 = _interopRequireDefault(_CreateProfile);
 
-var _EditProfile = __webpack_require__(284);
+var _EditProfile = __webpack_require__(286);
 
 var _EditProfile2 = _interopRequireDefault(_EditProfile);
 
-var _MovieProfile = __webpack_require__(290);
+var _MovieProfile = __webpack_require__(292);
 
 var _MovieProfile2 = _interopRequireDefault(_MovieProfile);
 
@@ -544,7 +663,6 @@ var App = function (_Component) {
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _MovieSection2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/register', component: _Register2.default }),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login', component: _Login2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/movie/:movie-name', component: _MovieProfile2.default }),
             _react2.default.createElement(
               _reactRouterDom.Switch,
               null,
@@ -559,6 +677,11 @@ var App = function (_Component) {
               _reactRouterDom.Switch,
               null,
               _react2.default.createElement(_PrivateRoute2.default, { exact: true, path: '/edit-profile', component: _EditProfile2.default })
+            ),
+            _react2.default.createElement(
+              _reactRouterDom.Switch,
+              null,
+              _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:movieName', component: _MovieProfile2.default })
             )
           )
         )
@@ -575,72 +698,7 @@ _reactDom2.default.render(_react2.default.createElement(App, null), app);
 
 /***/ }),
 
-/***/ 279:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getTrendingMovies = getTrendingMovies;
-
-var _axios = __webpack_require__(77);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _moviesData = __webpack_require__(79);
-
-var _moviesData2 = _interopRequireDefault(_moviesData);
-
-var _types = __webpack_require__(54);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function getTrendingMovies() {
-  var _this = this;
-
-  return function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-      var search, goodMovies;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              search = new _moviesData2.default();
-              _context.next = 3;
-              return search.discoverMovies();
-
-            case 3:
-              console.log(search.result);
-              goodMovies = search.result;
-
-
-              dispatch({
-                type: _types.GET_TRENDING_MOVIES,
-                payload: goodMovies
-              });
-
-            case 6:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, _this);
-    }));
-
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }();
-}
-
-/***/ }),
-
-/***/ 280:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -652,7 +710,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -660,19 +718,19 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
-var _classnames = __webpack_require__(80);
+var _classnames = __webpack_require__(46);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _authActions = __webpack_require__(78);
+var _authActions = __webpack_require__(80);
 
-var _reactDom = __webpack_require__(53);
+var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _TextFieldGroup = __webpack_require__(90);
+var _TextFieldGroup = __webpack_require__(91);
 
 var _TextFieldGroup2 = _interopRequireDefault(_TextFieldGroup);
 
@@ -838,7 +896,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { loginUser: _authAc
 
 /***/ }),
 
-/***/ 281:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -850,7 +908,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -860,19 +918,19 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = __webpack_require__(31);
 
-var _reactDom = __webpack_require__(53);
+var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _classnames = __webpack_require__(80);
+var _classnames = __webpack_require__(46);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
-var _authActions = __webpack_require__(78);
+var _authActions = __webpack_require__(80);
 
-var _TextFieldGroup = __webpack_require__(90);
+var _TextFieldGroup = __webpack_require__(91);
 
 var _TextFieldGroup2 = _interopRequireDefault(_TextFieldGroup);
 
@@ -1052,7 +1110,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { registerUser: _aut
 
 /***/ }),
 
-/***/ 282:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1064,13 +1122,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(31);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
 var _propTypes = __webpack_require__(10);
 
@@ -1106,7 +1164,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(PrivateRoute);
 
 /***/ }),
 
-/***/ 283:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1118,11 +1176,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
 var _reactRouterDom = __webpack_require__(31);
 
@@ -1130,19 +1188,19 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _TextFieldGroup = __webpack_require__(90);
+var _TextFieldGroup = __webpack_require__(91);
 
 var _TextFieldGroup2 = _interopRequireDefault(_TextFieldGroup);
 
-var _TextAreaFieldGroup = __webpack_require__(174);
+var _TextAreaFieldGroup = __webpack_require__(176);
 
 var _TextAreaFieldGroup2 = _interopRequireDefault(_TextAreaFieldGroup);
 
-var _SelectListGroup = __webpack_require__(173);
+var _SelectListGroup = __webpack_require__(175);
 
 var _SelectListGroup2 = _interopRequireDefault(_SelectListGroup);
 
-var _profileActions = __webpack_require__(67);
+var _profileActions = __webpack_require__(68);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1307,7 +1365,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { createProfile: _pr
 
 /***/ }),
 
-/***/ 284:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1319,11 +1377,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
 var _reactRouterDom = __webpack_require__(31);
 
@@ -1331,21 +1389,21 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _TextFieldGroup = __webpack_require__(90);
+var _TextFieldGroup = __webpack_require__(91);
 
 var _TextFieldGroup2 = _interopRequireDefault(_TextFieldGroup);
 
-var _TextAreaFieldGroup = __webpack_require__(174);
+var _TextAreaFieldGroup = __webpack_require__(176);
 
 var _TextAreaFieldGroup2 = _interopRequireDefault(_TextAreaFieldGroup);
 
-var _SelectListGroup = __webpack_require__(173);
+var _SelectListGroup = __webpack_require__(175);
 
 var _SelectListGroup2 = _interopRequireDefault(_SelectListGroup);
 
-var _profileActions = __webpack_require__(67);
+var _profileActions = __webpack_require__(68);
 
-var _isEmpty = __webpack_require__(177);
+var _isEmpty = __webpack_require__(179);
 
 var _isEmpty2 = _interopRequireDefault(_isEmpty);
 
@@ -1529,7 +1587,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { createProfile: _pr
 
 /***/ }),
 
-/***/ 285:
+/***/ 287:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1541,11 +1599,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(175);
+var _Header = __webpack_require__(177);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -1593,7 +1651,7 @@ exports.default = Background;
 
 /***/ }),
 
-/***/ 286:
+/***/ 288:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1605,15 +1663,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(53);
+var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _moviesData = __webpack_require__(79);
+var _moviesData = __webpack_require__(81);
 
 var _moviesData2 = _interopRequireDefault(_moviesData);
 
@@ -1621,15 +1679,19 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Background = __webpack_require__(285);
+var _Background = __webpack_require__(287);
 
 var _Background2 = _interopRequireDefault(_Background);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
 var _reactRouterDom = __webpack_require__(31);
 
-var _movieActions = __webpack_require__(279);
+var _movieActions = __webpack_require__(174);
+
+var _reactSlick = __webpack_require__(639);
+
+var _reactSlick2 = _interopRequireDefault(_reactSlick);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1696,14 +1758,11 @@ var MovieSection = function (_Component) {
     }));
 
     _this.componentDidMount = function () {
-      // const search = new moviesData()
-      // await search.discoverMovies()
-      // console.log(search.result)
-      // const goodMovies = search.result
+      window.scrollTo(0, 0);
       _this.props.getTrendingMovies();
       console.log(_this.props.getTrendingMovies());
-
-      console.log(_this.state);
+      console.log(_this.props.match.params.movieName);
+      _this.props.topRatedMovies();
     };
 
     _this.state = {
@@ -1717,6 +1776,7 @@ var MovieSection = function (_Component) {
     _this.onChangeMovies = _this.onChangeMovies.bind(_this);
     // this.filteredData = this.filteredData.bind(this)
     _this.searchMovies = _this.searchMovies.bind(_this);
+    _this.topMovies = _this.topMovies.bind(_this);
     return _this;
   }
 
@@ -1759,14 +1819,33 @@ var MovieSection = function (_Component) {
   }, {
     key: 'newMovies',
     value: function newMovies() {
-      console.log(this.props.movies);
+
       var moviesData = this.props.movies.moviesData;
 
       var newMovies = Object.values(moviesData);
       return newMovies.map(function (movie, index) {
         return _react2.default.createElement(
           _reactRouterDom.Link,
-          { key: index, to: '/movie/' + movie.name },
+          { key: index, to: '/' + movie.title },
+          _react2.default.createElement(
+            'li',
+            { className: 'singleMovie' },
+            _react2.default.createElement('img', { src: 'https://image.tmdb.org/t/p/w200' + movie.poster_path })
+          )
+        );
+      });
+    }
+  }, {
+    key: 'topMovies',
+    value: function topMovies() {
+
+      var moviesData = this.props.movies.topRatedData;
+
+      var newMovies = Object.values(moviesData);
+      return newMovies.map(function (movie, index) {
+        return _react2.default.createElement(
+          _reactRouterDom.Link,
+          { key: index, to: '/' + movie.title },
           _react2.default.createElement(
             'li',
             { className: 'singleMovie' },
@@ -1778,20 +1857,34 @@ var MovieSection = function (_Component) {
   }, {
     key: 'searchMovies',
     value: function searchMovies() {
-
+      console.log(this.props);
       var newMovies = Object.values(this.state.filteredMovies);
 
       return newMovies.map(function (movie, index) {
         return _react2.default.createElement(
-          'li',
-          { key: index, className: 'singleMovie' },
-          _react2.default.createElement('img', { src: 'https://image.tmdb.org/t/p/w200' + movie.poster_path })
+          _reactRouterDom.Link,
+          { key: index, to: '/' + movie.title },
+          _react2.default.createElement(
+            'li',
+            { className: 'singleMovie' },
+            _react2.default.createElement('img', { src: 'https://image.tmdb.org/t/p/w200' + movie.poster_path })
+          )
         );
       });
     }
   }, {
     key: 'render',
     value: function render() {
+      console.log(this.props);
+
+      var settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 4
+      };
+
       return _react2.default.createElement(
         'div',
         null,
@@ -1822,30 +1915,56 @@ var MovieSection = function (_Component) {
               _react2.default.createElement(
                 'h1',
                 { className: 'popularTitle col-xs-3' },
-                'Your Search'
+                ' Search Results '
               ),
               _react2.default.createElement(
                 'div',
                 { className: 'row center-xs' },
                 _react2.default.createElement(
                   'ul',
-                  { className: 'moviesArea' },
-                  this.searchMovies()
+                  { className: 'moviesArea col-xs-11' },
+                  _react2.default.createElement(
+                    _reactSlick2.default,
+                    settings,
+                    this.searchMovies()
+                  )
                 )
               )
             ),
             _react2.default.createElement(
               'h1',
               { className: 'popularTitle col-xs-3' },
-              ' What\'s Popular Now'
+              ' Discover '
             ),
             _react2.default.createElement(
               'div',
               { className: 'row center-xs' },
               _react2.default.createElement(
                 'ul',
-                { className: 'moviesArea' },
-                this.newMovies()
+                { className: 'moviesArea col-xs-11' },
+                _react2.default.createElement(
+                  _reactSlick2.default,
+                  settings,
+                  this.newMovies()
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'h1',
+              { className: 'popularTitle col-xs-3' },
+              'Top Rated'
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'row center-xs' },
+              _react2.default.createElement(
+                'ul',
+                { className: 'moviesArea col-xs-11' },
+                _react2.default.createElement(
+                  _reactSlick2.default,
+                  settings,
+                  this.topMovies()
+                )
               )
             )
           )
@@ -1861,18 +1980,20 @@ MovieSection.propTypes = {
   auth: _propTypes2.default.object.isRequired,
   movies: _propTypes2.default.object.isRequired
 };
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
+
     auth: state.auth,
     movies: state.movies
+
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { getTrendingMovies: _movieActions.getTrendingMovies })(MovieSection);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { getTrendingMovies: _movieActions.getTrendingMovies, topRatedMovies: _movieActions.topRatedMovies })((0, _reactRouterDom.withRouter)(MovieSection));
 
 /***/ }),
 
-/***/ 287:
+/***/ 289:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1884,25 +2005,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
 var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _profileActions = __webpack_require__(67);
+var _profileActions = __webpack_require__(68);
 
-var _Header = __webpack_require__(175);
+var _Header = __webpack_require__(177);
 
 var _Header2 = _interopRequireDefault(_Header);
 
 var _reactRouterDom = __webpack_require__(31);
 
-var _profileActions2 = __webpack_require__(291);
+var _profileActions2 = __webpack_require__(293);
 
 var _profileActions3 = _interopRequireDefault(_profileActions2);
 
@@ -2066,7 +2187,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { getCurrentProfile:
 
 /***/ }),
 
-/***/ 288:
+/***/ 290:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2078,13 +2199,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _MovieHeader = __webpack_require__(289);
+var _MovieHeader = __webpack_require__(291);
 
 var _MovieHeader2 = _interopRequireDefault(_MovieHeader);
+
+var _reactRedux = __webpack_require__(20);
+
+var _propTypes = __webpack_require__(10);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2094,43 +2221,50 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Background = function (_Component) {
-  _inherits(Background, _Component);
+var MovieBackground = function (_Component) {
+  _inherits(MovieBackground, _Component);
 
-  function Background() {
-    _classCallCheck(this, Background);
+  function MovieBackground() {
+    _classCallCheck(this, MovieBackground);
 
-    return _possibleConstructorReturn(this, (Background.__proto__ || Object.getPrototypeOf(Background)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MovieBackground.__proto__ || Object.getPrototypeOf(MovieBackground)).apply(this, arguments));
   }
 
-  _createClass(Background, [{
+  _createClass(MovieBackground, [{
     key: 'render',
     value: function render() {
+      var movie = this.props.movies.pickedMovie;
       return _react2.default.createElement(
         'header',
-        { className: 'head' },
+        { className: 'movieProfile' },
         _react2.default.createElement(_MovieHeader2.default, null),
         _react2.default.createElement(
           'div',
-          { className: ' movieTitle' },
-          _react2.default.createElement(
-            'h3',
-            null,
-            'Blade Runner 2049'
-          )
+          { className: 'movieImage' },
+          _react2.default.createElement('img', { className: 'moviesPoster', src: 'https://image.tmdb.org/t/p/original' + movie.poster_path })
         )
       );
     }
   }]);
 
-  return Background;
+  return MovieBackground;
 }(_react.Component);
 
-exports.default = Background;
+MovieBackground.propTypes = {
+  movies: _propTypes2.default.object.isRequired
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    movies: state.movies
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(MovieBackground);
 
 /***/ }),
 
-/***/ 289:
+/***/ 291:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2142,15 +2276,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(53);
+var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _moviesData = __webpack_require__(79);
+var _moviesData = __webpack_require__(81);
 
 var _moviesData2 = _interopRequireDefault(_moviesData);
 
@@ -2160,15 +2294,13 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
-var _authActions = __webpack_require__(78);
+var _authActions = __webpack_require__(80);
 
-var _profileActions = __webpack_require__(67);
+var _profileActions = __webpack_require__(68);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2180,43 +2312,11 @@ var MovieHeader = function (_Component) {
   _inherits(MovieHeader, _Component);
 
   function MovieHeader() {
-    var _this2 = this;
-
     _classCallCheck(this, MovieHeader);
 
     var _this = _possibleConstructorReturn(this, (MovieHeader.__proto__ || Object.getPrototypeOf(MovieHeader)).call(this));
 
-    _this.hitButton = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var query, search;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              query = 'Blade Runner';
-
-              if (!query) {
-                _context.next = 6;
-                break;
-              }
-
-              search = new _moviesData2.default(query);
-              _context.next = 5;
-              return search.getResults();
-
-            case 5:
-
-              console.log(search.result);
-
-            case 6:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, _this2);
-    }));
-
     _this.state = {};
-    _this.hitButton = _this.hitButton.bind(_this);
     return _this;
   }
 
@@ -2243,7 +2343,7 @@ var MovieHeader = function (_Component) {
           { className: 'oneAuth' },
           _react2.default.createElement(
             'a',
-            { onClick: this.hitButton },
+            null,
             'Movies'
           )
         ),
@@ -2375,7 +2475,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { logoutUser: _authA
 
 /***/ }),
 
-/***/ 290:
+/***/ 292:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2387,11 +2487,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(24);
+var _reactRedux = __webpack_require__(20);
 
 var _propTypes = __webpack_require__(10);
 
@@ -2399,9 +2499,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = __webpack_require__(31);
 
-var _MovieBackground = __webpack_require__(288);
+var _MovieBackground = __webpack_require__(290);
 
 var _MovieBackground2 = _interopRequireDefault(_MovieBackground);
+
+var _movieActions = __webpack_require__(174);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2417,25 +2519,75 @@ var MovieProfile = function (_Component) {
   function MovieProfile() {
     _classCallCheck(this, MovieProfile);
 
-    return _possibleConstructorReturn(this, (MovieProfile.__proto__ || Object.getPrototypeOf(MovieProfile)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (MovieProfile.__proto__ || Object.getPrototypeOf(MovieProfile)).call(this));
+
+    _this.state = {};
+    _this.hitButton = _this.hitButton.bind(_this);
+    return _this;
   }
 
   _createClass(MovieProfile, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      window.scrollTo(0, 0);
+      this.hitButton();
+    }
+  }, {
+    key: 'hitButton',
+    value: function hitButton() {
+      var _this2 = this;
+
+      var discoverData = this.props.movies.moviesData;
+      var topData = this.props.movies.topRatedData;
+      var moviesData = discoverData.concat(topData);
+
+      console.log(moviesData);
+      var newMovies = Object.values(moviesData);
+      return newMovies.map(function (movie, index) {
+        if (movie.title === _this2.props.match.params.movieName) {
+          _this2.props.pickedMovie(movie);
+          return console.log(movie)
+
+          //  <Link  key={index} to={`/movie/${movie.title}`}><li className="singleMovie">
+          //   <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
+
+          //  </li></Link>
+
+          ;
+        }
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      // const {user} = this.props.auth;
-      // const {profile, loading} = this.props.profile;
-
+      console.log(this.props.movies.moviesData);
+      var props = this.props;
+      var movie = this.props.movies.pickedMovie;
+      console.log(movie);
 
       return _react2.default.createElement(
         'div',
-        { className: 'profilePage' },
+        { id: 'mainMovieProfile' },
+        _react2.default.createElement(_MovieBackground2.default, props),
+        _react2.default.createElement('section', { className: 'movieInformation' }),
         _react2.default.createElement(
-          'header',
-          { className: 'profile-head' },
-          _react2.default.createElement(_MovieBackground2.default, null)
-        ),
-        _react2.default.createElement('section', null)
+          'div',
+          { className: 'infoBlock' },
+          _react2.default.createElement(
+            'div',
+            { className: ' movieTitle' },
+            _react2.default.createElement(
+              'h6',
+              { className: 'movieDate' },
+              movie.release_date
+            ),
+            _react2.default.createElement(
+              'h3',
+              { className: 'movieName' },
+              movie.title
+            )
+          )
+        )
       );
     }
   }]);
@@ -2444,23 +2596,25 @@ var MovieProfile = function (_Component) {
 }(_react.Component);
 
 MovieProfile.propTypes = {
-
   auth: _propTypes2.default.object.isRequired,
+
+  movies: _propTypes2.default.object.isRequired,
   profile: _propTypes2.default.object.isRequired
 };
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
     profile: state.profile,
-    auth: state.auth
+    auth: state.auth,
+    movies: state.movies
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(MovieProfile);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { pickedMovie: _movieActions.pickedMovie })(MovieProfile);
 
 /***/ }),
 
-/***/ 291:
+/***/ 293:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2470,7 +2624,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -2494,7 +2648,7 @@ exports.default = profileActions;
 
 /***/ }),
 
-/***/ 292:
+/***/ 294:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2521,13 +2675,13 @@ exports.default = function () {
   }
 };
 
-var _isEmpty = __webpack_require__(177);
+var _isEmpty = __webpack_require__(179);
 
 var _isEmpty2 = _interopRequireDefault(_isEmpty);
 
-var _types = __webpack_require__(54);
+var _types = __webpack_require__(55);
 
-var _constants = __webpack_require__(299);
+var _constants = __webpack_require__(301);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2538,7 +2692,7 @@ var initialState = {
 
 /***/ }),
 
-/***/ 293:
+/***/ 295:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2560,13 +2714,13 @@ exports.default = function () {
   }
 };
 
-var _types = __webpack_require__(54);
+var _types = __webpack_require__(55);
 
 var initialState = {};
 
 /***/ }),
 
-/***/ 294:
+/***/ 296:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2576,21 +2730,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(89);
+var _redux = __webpack_require__(90);
 
-var _authReducer = __webpack_require__(292);
+var _authReducer = __webpack_require__(294);
 
 var _authReducer2 = _interopRequireDefault(_authReducer);
 
-var _errorReducer = __webpack_require__(293);
+var _errorReducer = __webpack_require__(295);
 
 var _errorReducer2 = _interopRequireDefault(_errorReducer);
 
-var _profileReducer = __webpack_require__(296);
+var _profileReducer = __webpack_require__(298);
 
 var _profileReducer2 = _interopRequireDefault(_profileReducer);
 
-var _movieReducer = __webpack_require__(295);
+var _movieReducer = __webpack_require__(297);
 
 var _movieReducer2 = _interopRequireDefault(_movieReducer);
 
@@ -2601,11 +2755,12 @@ exports.default = (0, _redux.combineReducers)({
   errors: _errorReducer2.default,
   profile: _profileReducer2.default,
   movies: _movieReducer2.default
+
 });
 
 /***/ }),
 
-/***/ 295:
+/***/ 297:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2627,23 +2782,33 @@ exports.default = function () {
         moviesData: action.payload
 
       });
+    case _types.TOP_RATED_MOVIES:
+      return _extends({}, state, {
+        topRatedData: action.payload
+      });
+    case _types.PICKED_MOVIE:
+      return _extends({}, state, {
+        pickedMovie: action.payload
+      });
     default:
       return state;
   }
 };
 
-var _types = __webpack_require__(54);
+var _types = __webpack_require__(55);
 
 var initialState = {
   movies: '',
   filteredMovies: '',
   moviesData: '',
-  showSearch: false
+  showSearch: false,
+  topRatedData: '',
+  pickedMovie: ''
 };
 
 /***/ }),
 
-/***/ 296:
+/***/ 298:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2678,7 +2843,7 @@ exports.default = function () {
   }
 };
 
-var _types = __webpack_require__(54);
+var _types = __webpack_require__(55);
 
 var initialState = {
   profile: null,
@@ -2688,7 +2853,7 @@ var initialState = {
 
 /***/ }),
 
-/***/ 297:
+/***/ 299:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2698,13 +2863,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(89);
+var _redux = __webpack_require__(90);
 
-var _reduxThunk = __webpack_require__(641);
+var _reduxThunk = __webpack_require__(657);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(294);
+var _reducers = __webpack_require__(296);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -2720,7 +2885,7 @@ exports.default = store;
 
 /***/ }),
 
-/***/ 54:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2737,19 +2902,21 @@ var PROFILE_NOT_FOUND = exports.PROFILE_NOT_FOUND = 'PROFILE_NOT_FOUND';
 var CLEAR_CURRENT_PROFILE = exports.CLEAR_CURRENT_PROFILE = 'CLEAR_CURRENT_PROFILE';
 var GET_PROFILES = exports.GET_PROFILES = 'GET_PROFILES';
 var GET_TRENDING_MOVIES = exports.GET_TRENDING_MOVIES = 'GET_TRENDING_MOVIES';
+var TOP_RATED_MOVIES = exports.TOP_RATED_MOVIES = 'TOP_RATED_MOVIES';
+var PICKED_MOVIE = exports.PICKED_MOVIE = 'PICKED_MOVIE';
 
 /***/ }),
 
-/***/ 650:
+/***/ 668:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(261);
-module.exports = __webpack_require__(260);
+__webpack_require__(264);
+module.exports = __webpack_require__(263);
 
 
 /***/ }),
 
-/***/ 67:
+/***/ 68:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2760,11 +2927,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.clearCurrentProfile = exports.setProfileLoading = exports.deleteAccount = exports.createProfile = exports.getCurrentProfile = undefined;
 
-var _axios = __webpack_require__(77);
+var _axios = __webpack_require__(79);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _types = __webpack_require__(54);
+var _types = __webpack_require__(55);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2834,7 +3001,7 @@ var clearCurrentProfile = exports.clearCurrentProfile = function clearCurrentPro
 
 /***/ }),
 
-/***/ 78:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2845,19 +3012,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logoutUser = exports.setCurrentUser = exports.loginUser = exports.registerUser = undefined;
 
-var _axios = __webpack_require__(77);
+var _axios = __webpack_require__(79);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _setAuthToken = __webpack_require__(176);
+var _setAuthToken = __webpack_require__(178);
 
 var _setAuthToken2 = _interopRequireDefault(_setAuthToken);
 
-var _jwtDecode = __webpack_require__(217);
+var _jwtDecode = __webpack_require__(220);
 
 var _jwtDecode2 = _interopRequireDefault(_jwtDecode);
 
-var _types = __webpack_require__(54);
+var _types = __webpack_require__(55);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2921,7 +3088,7 @@ var logoutUser = exports.logoutUser = function logoutUser() {
 
 /***/ }),
 
-/***/ 79:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2933,7 +3100,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _axios = __webpack_require__(77);
+var _axios = __webpack_require__(79);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -3006,7 +3173,7 @@ var moviesData = function () {
                 key = '55235c76109068a112aaa3dcd3a08bda';
                 _context2.prev = 2;
                 _context2.next = 5;
-                return (0, _axios2.default)('https://api.themoviedb.org/3/discover/movie?api_key=' + key + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1');
+                return (0, _axios2.default)('https://api.themoviedb.org/3/discover/movie?api_key=' + key + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false');
 
               case 5:
                 res = _context2.sent;
@@ -3036,6 +3203,49 @@ var moviesData = function () {
 
       return discoverMovies;
     }()
+  }, {
+    key: 'topRatedMovies',
+    value: function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+        var proxy, key, res;
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                proxy = 'https://cors-anywhere.herokuapp.com/';
+                key = '55235c76109068a112aaa3dcd3a08bda';
+                _context3.prev = 2;
+                _context3.next = 5;
+                return (0, _axios2.default)('https://api.themoviedb.org/3/movie/top_rated?api_key=' + key + '&language=en-US');
+
+              case 5:
+                res = _context3.sent;
+
+                this.result = res.data.results;
+                // console.log(this.result);
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3['catch'](2);
+
+                alert(_context3.t0);
+
+              case 12:
+              case 'end':
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this, [[2, 9]]);
+      }));
+
+      function topRatedMovies() {
+        return _ref3.apply(this, arguments);
+      }
+
+      return topRatedMovies;
+    }()
   }]);
 
   return moviesData;
@@ -3045,7 +3255,7 @@ exports.default = moviesData;
 
 /***/ }),
 
-/***/ 90:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3055,7 +3265,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -3063,7 +3273,7 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = __webpack_require__(80);
+var _classnames = __webpack_require__(46);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -3126,4 +3336,4 @@ exports.default = TextFieldGroup;
 
 /***/ })
 
-},[650]);
+},[668]);

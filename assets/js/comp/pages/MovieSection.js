@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 
 import Background from './Background'
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom'
-import {getTrendingMovies} from '../actions/movieActions'
+import { Link, withRouter } from 'react-router-dom'
+import {getTrendingMovies, topRatedMovies} from '../actions/movieActions'
+import Slider from "react-slick";
 
  class MovieSection extends Component {
   constructor () {
@@ -22,6 +23,7 @@ import {getTrendingMovies} from '../actions/movieActions'
     this.onChangeMovies = this.onChangeMovies.bind(this)
     // this.filteredData = this.filteredData.bind(this)
     this.searchMovies = this.searchMovies.bind(this)
+    this.topMovies = this.topMovies.bind(this)
   }
 
  hitButton = async() =>{
@@ -95,49 +97,67 @@ onChangeMovies(e){
 
 
 componentDidMount = () => {
-  // const search = new moviesData()
-  // await search.discoverMovies()
-  // console.log(search.result)
-  // const goodMovies = search.result
+  window.scrollTo(0, 0)
   this.props.getTrendingMovies()
   console.log(this.props.getTrendingMovies())
-  
-  console.log(this.state)
+  console.log(this.props.match.params.movieName)
+  this.props.topRatedMovies()
   
 }
 
   newMovies() {
-    console.log(this.props.movies)
+    
     const moviesData = this.props.movies.moviesData
   
     const newMovies = Object.values(moviesData)
     return newMovies.map((movie, index) => {
       return (
         
-         <Link  key={index} to={`/movie/${movie.name}`}><li className="singleMovie">
+         <Link  key={index} to={`/${movie.title}`}><li className="singleMovie">
           <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
           
          </li></Link>
         
       )
     })
-  
-  
-  
+
+} 
+
+
+topMovies() {
     
-  } 
+  const moviesData = this.props.movies.topRatedData
+
+  const newMovies = Object.values(moviesData)
+  return newMovies.map((movie, index) => {
+    return (
+      
+       <Link  key={index} to={`/${movie.title}`}><li className="singleMovie">
+        <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
+        
+       </li></Link>
+      
+    )
+  })
+
+} 
+
+
+
+
+
 
   searchMovies(){
-
+    console.log(this.props)
     const newMovies = Object.values(this.state.filteredMovies)
     
    return newMovies.map((movie, index) => {
      return (
       
-        <li key={index} className="singleMovie">
-         <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
-         
-        </li>
+      <Link  key={index} to={`/${movie.title}`}><li className="singleMovie">
+      <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
+      
+     </li></Link>
        
      )
    })
@@ -146,6 +166,17 @@ componentDidMount = () => {
 
  
   render () {
+    console.log(this.props)
+
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 5,
+      slidesToScroll: 4
+    };
+
+
     return (<div>
       <Background/>
       <section id="movieSection">
@@ -160,20 +191,37 @@ componentDidMount = () => {
         
           {this.state.showSearch == true && 
           <div>
-         <h1 className="popularTitle col-xs-3">Your Search</h1>
+         <h1 className="popularTitle col-xs-3"> Search Results </h1>
           <div className="row center-xs">
 
-            <ul className="moviesArea">{this.searchMovies()}</ul>
+            <ul className="moviesArea col-xs-11">
+              <Slider {...settings}>
+              {this.searchMovies()}
+              </Slider>
+            </ul>
           </div>
           </div>}
         
-          <h1 className="popularTitle col-xs-3"> What's Popular Now</h1>
+          <h1 className="popularTitle col-xs-3"> Discover </h1>
 
         <div className="row center-xs">
-
-          <ul className="moviesArea">
-          {this.newMovies()}
+          <ul className="moviesArea col-xs-11">
+            <Slider {...settings}>
+            {this.newMovies()}
+            </Slider>
           </ul>
+
+        </div>
+
+        <h1 className="popularTitle col-xs-3">Top Rated</h1>
+
+        <div className="row center-xs">
+          <ul className="moviesArea col-xs-11">
+            <Slider {...settings}>
+            {this.topMovies()}
+            </Slider>
+          </ul>
+          
         </div>
         </section>
        
@@ -188,9 +236,11 @@ MovieSection.propTypes = {
   auth: PropTypes.object.isRequired,
   movies: PropTypes.object.isRequired
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  
   auth: state.auth,
   movies:state.movies
+
 })
 
-export default connect(mapStateToProps, {getTrendingMovies})(MovieSection)
+export default connect(mapStateToProps, {getTrendingMovies, topRatedMovies})(withRouter(MovieSection))

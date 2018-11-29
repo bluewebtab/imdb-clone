@@ -46,6 +46,9 @@ app.get('*', function (request, response){
   response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
+
+
+
 const port = process.env.port || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

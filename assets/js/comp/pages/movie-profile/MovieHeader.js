@@ -12,19 +12,9 @@ import {clearCurrentProfile} from '../../actions/profileActions'
     this.state = {
      
     }
-    this.hitButton = this.hitButton.bind(this)
   }
 
- hitButton = async() =>{
-   const query = 'Blade Runner'
-  if(query){
-    const search = new moviesData(query)
-
-    await search.getResults()
-
-    console.log(search.result)
-  }
-}
+ 
 
   onLogoutClick(e){
     e.preventDefault();
@@ -38,7 +28,7 @@ import {clearCurrentProfile} from '../../actions/profileActions'
 
     const authLinks = (
       <ul className="rightInfo">
-          <li className="oneAuth"><a  onClick ={this.hitButton}>Movies</a></li>
+          <li className="oneAuth"><a>Movies</a></li>
           <li className="twoAuth">
           <a>TV Shows</a>
           </li>
