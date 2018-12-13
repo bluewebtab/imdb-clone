@@ -4,6 +4,7 @@ const path = require('path')
 
 const bodyParser = require('body-parser')
 const passport = require('passport')
+const serveStatic = require("serve-static");
 
 //login and authentication
 const users = require('./routes/api/users')
@@ -40,11 +41,11 @@ app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/movie', movie)
 
-app.use(express.static(__dirname + '/public'))
+app.use("/", serveStatic(path.join(__dirname, "/public")));
 
-app.get('*', function (request, response){
-  response.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-})
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 
 
