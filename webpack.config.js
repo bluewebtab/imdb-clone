@@ -12,7 +12,7 @@ module.exports = {
     vendor: VENDOR_LIBS
   },
   output: { filename: '[name].js',
-            path: path.resolve(__dirname, 'public/js/components') },
+            path: path.resolve(__dirname, '/public/js/components') },
   module: {
     rules: [
       {
@@ -42,6 +42,7 @@ module.exports = {
         }
     ]
   },
+  
   plugins: [
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
