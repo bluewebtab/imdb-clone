@@ -2,7 +2,7 @@
   "name": "imdb-clone-app",
   "version": "1.0.0",
   "description": "Moviizz",
-  "main": "index.js",
+  "main": "server.js",
   "author": "Ronny G",
   "license": "MIT",
   "dependencies": {
@@ -34,6 +34,7 @@
     "html-webpack-plugin": "^2.28.0",
     "jsonwebtoken": "^8.3.0",
     "jwt-decode": "^2.2.0",
+    "mongodb": "^3.1.10",
     "mongoose": "^5.3.4",
     "node-sass": "^4.5.2",
     "passport": "^0.4.0",
