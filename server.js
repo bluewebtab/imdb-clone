@@ -16,7 +16,6 @@ const movie = require('./routes/api/movie')
 
 const app = express();
 
-app.use("/", serveStatic(path.join(__dirname, "/public")));
 
 
 //Body parser middleware
@@ -44,13 +43,15 @@ app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/movie', movie)
 
+if(process.env.NODE_ENV === 'production'){
+  app.use("/", serveStatic(path.join(__dirname, "/public")));
 
   
   app.get('*', function(req, res){
     res.sendFile(__dirname + '/public/index.html')
   })
 
-
+}
 
 
 const port = process.env.port || 5000;
