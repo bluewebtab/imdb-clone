@@ -8,47 +8,20 @@ const MovieSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users'
-  }, 
+  },
   movie_id: {
-    type: String,
-    ref: 'movie'
+    type: Number
   },
-  
   movie: {
-    type:String
+    type: Object
   },
-  watchlist: [
-    {
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    },
-      movie_id: {
-        
-          type:String,
-          ref: 'movie'
-      
-    },
-    movie_object: {
-      type: String
-    }
-  }
-  ],
   likes: [
     {
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
-    },
-       movie_id: {
-          type: String,
-          ref: 'movie'
-      
-    },
-
-    movie_object: {
-      type: String
     }
+       
     }
   ],
   reviews: [
@@ -57,11 +30,7 @@ const MovieSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    movie_id: {
-      type: String,
-      ref: 'movie'
-  
-    },
+   
        
      headline: {
        type: String,
@@ -77,9 +46,7 @@ const MovieSchema = new Schema({
      avatar: {
        type:String
      }, 
-     movie_object: {
-      type: String
-    },
+     
      date: {
        type:Date,
        default: Date.now

@@ -81,9 +81,10 @@ class App extends Component {
                   <PrivateRoute exact path='/edit-profile' component={EditProfile} />
                   </Switch>
                   <Switch>
-                  <Route exact path='/:movieName' component={MovieProfile} />
+                  <Route exact path='/moviepath/:movieName' component={MovieProfile} />
 
                   </Switch>
+                  
                   
               </div>
         </BrowserRouter>

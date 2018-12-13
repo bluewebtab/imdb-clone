@@ -57,9 +57,6 @@ class ProfilePage extends Component {
        <section className="profile-information">
         {profilePageContent}
         <div className=" profile-items">
-        <div className="watchlist-profile ">
-          <h1 className="profileListTitle">Watchlist</h1>
-        </div>
 
         <div className="likes-profile">
           <h1 className="profileListTitle">Movies you like</h1>

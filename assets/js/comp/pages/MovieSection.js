@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Background from './Background'
 import {connect} from 'react-redux';
 import { Link, withRouter } from 'react-router-dom'
-import {getTrendingMovies, topRatedMovies} from '../actions/movieActions'
+import {getTrendingMovies, topRatedMovies, searchOneMovie} from '../actions/movieActions'
 import Slider from "react-slick";
 
  class MovieSection extends Component {
@@ -39,9 +39,7 @@ import Slider from "react-slick";
     const searchMovie = search.result
     console.log(searchMovie)
    
-    this.setState({
-      filteredMovies: searchMovie
-    })
+    this.props.searchOneMovie(searchMovie)
     if(this.state.movies != '' && this.state.showSearch === false){
   
       this.setState({
@@ -113,7 +111,7 @@ componentDidMount = () => {
     return newMovies.map((movie, index) => {
       return (
         
-         <Link  key={index} to={`/${movie.title}`}><li className="singleMovie">
+         <Link  key={index} to={`/moviepath/${movie.title}`}><li className="singleMovie">
           <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
           
          </li></Link>
@@ -132,7 +130,7 @@ topMovies() {
   return newMovies.map((movie, index) => {
     return (
       
-       <Link  key={index} to={`/${movie.title}`}><li className="singleMovie">
+       <Link  key={index} to={`/moviepath/${movie.title}`}><li className="singleMovie">
         <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
         
        </li></Link>
@@ -142,19 +140,23 @@ topMovies() {
 
 } 
 
-
+onInputPress(e){
+ if(e.key === 'Enter'){
+   this.hitButton()
+ }
+}
 
 
 
 
   searchMovies(){
     console.log(this.props)
-    const newMovies = Object.values(this.state.filteredMovies)
+    const newMovies = Object.values(this.props.movies.filteredMovies)
     
    return newMovies.map((movie, index) => {
      return (
       
-      <Link  key={index} to={`/${movie.title}`}><li className="singleMovie">
+      <Link  key={index} to={`/moviepath/${movie.title}`}><li className="singleMovie">
       <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
       
      </li></Link>
@@ -182,7 +184,7 @@ topMovies() {
       <section id="movieSection">
       <section  className="row center-xs">
         <section className="search-area col-xs-12">
-          <input type="text" name="movies" onChange={this.onChangeMovies} placeholder="Find movies here..."/>
+          <input type="text" name="movies" onChange={this.onChangeMovies} onKeyPress={this.onInputPress.bind(this)} placeholder="Find movies here..."/>
           <a onClick={this.hitButton}><i className=" searchButton fas fa-search"></i></a>
         </section>
         </section>
@@ -243,4 +245,4 @@ const mapStateToProps = (state, ownProps) => ({
 
 })
 
-export default connect(mapStateToProps, {getTrendingMovies, topRatedMovies})(withRouter(MovieSection))
+export default connect(mapStateToProps, {getTrendingMovies, topRatedMovies, searchOneMovie})(withRouter(MovieSection))

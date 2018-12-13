@@ -10,11 +10,12 @@ const Movie = require('../../models/Movie')
 const Profile = require('../../models/Profile')
 
 const validatePostInput = require('../../validation/movies');
-router.get('/:id', (req,res)=>{
-   Movie.findById(req.params.id)
-  
-  .then(movie => res.json(movie))
-  .catch(err => res.status(404).json({nomoviesfound: 'No movies found'}))
+
+
+router.get('/', (req,res)=>{
+  Movie.find({}).then(function (movies) {
+    res.send(movies);
+    });
 })
 
 
@@ -24,21 +25,33 @@ router.get('/:id', (req,res)=>{
 
 router.post('/', passport.authenticate('jwt', {session:false}),
 (req, res) => {
-  const movie = new Movie({
-    movie_id:req.body.movie_id,
-    movie: req.body.movie,
-    user: req.user.id
-
-  })
-
-  movie
-    .save()
-    .then(movie => {
-      res.json(movie)
-    })
-    .catch(err => res.status(404).json(err))
+  // const movieId = req.body.movie_id
+ Movie.findOne({movie_id:req.body.movie_id})
+  .then(movie => {
+     if(!movie){
+      const newMovie = new Movie({
+        movie_id:req.body.movie_id,
+        movie: req.body.movie,
+        user: req.user.id
+      
+      })
+      
+      newMovie.save().then(movie => res.json(movie))
+       
+  
+  
+     }
 
   
+  })
+  .catch(err => console.log(err))
+     
+  
+   
+ 
+ 
+
+
 })
 
 router.post('/watchlist/:id', passport.authenticate('jwt', {session: false}),
@@ -60,6 +73,7 @@ router.post('/watchlist/:id', passport.authenticate('jwt', {session: false}),
       })
       .catch(err => res.status(404).json({movienotfound: 'No movie found'}))
   })
+
   })
 
 
@@ -101,34 +115,41 @@ router.post('/watchlist/:id', passport.authenticate('jwt', {session: false}),
 router.post('/like/:id', passport.authenticate('jwt', {session: false}),
 (req,res) => {
   Profile.findOne({user: req.user.id}).then(profile => {
-    Movie.findById(req.params.id)
-      .then(movie => {
-        if(movie.likes.filter(like => like.user.toString() === req.user.id).length > 0){
-          return res.status(400).json({alreadyliked: 'User already liked this post'});
-        }
+    console.log()
+  const movieId = Number(req.params.id)
+  console.log(req.params)
+  Movie.findOne({movie_id: movieId})
+  .then(movie =>{
+    if(movie.likes.filter(like =>like.user.toString() === req.user.id).length > 0){
+      console.log('already liked')
+      //  return res.status(400).json({alreadyliked: 'User already liked this post'})
+    }else{
+  //   //Add user id to likes array
+    movie.likes.unshift({user: req.user.id})
 
-        //Add user id to likes array
-        movie.likes.unshift({user: req.user.id})
+    movie.save().then(movie => res.json(movie))
+    }
+   })
+   .catch(err => res.status(404).json({ error: 'error' }))
+  })
 
-        movie.save().then(movie => res.json(movie))
-      })
-      .catch(err => res.status(404).json({movienotfound: 'No movie found'}))
-  })
-  })
+
+})
 
 
   // @route  POST api/movie/unlike/:id
-  // @desc   Like post
+  // @desc   unLike post
   // @access Private
   router.post('/unlike/:id', passport.authenticate('jwt', {session: false}),
   (req,res) => {
     Profile.findOne({user: req.user.id}).then(profile => {
-      Movie.findById(req.params.id)
+    const movieId = Number(req.params.id)
+  
+    Movie.findOne({movie_id: movieId})
         .then(movie => {
           if(movie.likes.filter(like => like.user.toString() === req.user.id).length === 0){
-            return res.status(400).json({notliked: 'You have not yet liked this post'});
-          }
-  
+                console.log('not liked yet')
+          }else{
           //Get remove index
           const removeIndex = movie.likes
             .map(item => item.user.toString())
@@ -139,10 +160,12 @@ router.post('/like/:id', passport.authenticate('jwt', {session: false}),
 
             //Save
             movie.save().then(movie => res.json(movie))
+          }
         })
-        .catch(err => res.status(404).json({movienotfound: 'No movie found'}))
+        .catch(err => res.status(404).json({error: 'error'}))
+      })
     })
-    })
+   
   
 
 

@@ -1,6 +1,8 @@
 import {GET_TRENDING_MOVIES,
         TOP_RATED_MOVIES,
-        PICKED_MOVIE
+        PICKED_MOVIE,
+        SEARCH_MOVIE,
+        GATHER_MOVIES
        } from '../actions/types';
 
 const initialState = {
@@ -9,7 +11,8 @@ const initialState = {
         moviesData: '',
         showSearch: false,
         topRatedData: '',
-        pickedMovie: ''
+        pickedMovie: '',
+        savedMovie: ''
       }
 
       export default function(state = initialState, action){
@@ -30,6 +33,18 @@ const initialState = {
                   ...state,
                   pickedMovie: action.payload
                 }
+                case GATHER_MOVIES:
+                return{
+                  ...state,
+                  savedMovie: action.payload
+                }
+                case SEARCH_MOVIE:
+                return{
+                  ...state,
+                  filteredMovies: action.payload
+                }
+                
+                
             default:
               return state;
         }
