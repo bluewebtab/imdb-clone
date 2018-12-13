@@ -41,7 +41,7 @@ app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/movie', movie)
 
-app.use("/", serveStatic(path.join(__dirname, "/public")));
+app.use(express.static("public"))
 
 app.get("*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
