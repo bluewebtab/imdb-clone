@@ -66,5 +66,10 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "nodemon": "^1.18.4"
-  }
+  },
+  
+    "engines" : { 
+      "node" : ">=8.0.0 <11.0.0" 
+    }
+  
 }
