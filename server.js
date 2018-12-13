@@ -16,6 +16,9 @@ const movie = require('./routes/api/movie')
 
 const app = express();
 
+app.use("/", serveStatic(path.join(__dirname, "/public")));
+
+
 //Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json())
@@ -41,12 +44,15 @@ app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/movie', movie)
 
-if(process.env.NODE_ENV === 'production'){
+
   app.use(express.static('public'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
   })
-}
+
+  app.get('*', function(req, res){
+    res.sendFile(__dirname + '/public/index.html')
+  })
 
 
 
