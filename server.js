@@ -42,14 +42,10 @@ app.use('/api/profile', profile)
 app.use('/api/movie', movie)
 
 if(process.env.NODE_ENV === 'production'){
-  app.use("/", serveStatic(path.join(__dirname, "/public")));
-
-  app.get('/', function(req, res){
-    res.sendFile(__dirname + '/public/index.html')
+  app.use(express.static('public'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
   })
-app.get("*", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
-});
 }
 
 
