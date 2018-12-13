@@ -45,11 +45,7 @@ app.use('/api/profile', profile)
 app.use('/api/movie', movie)
 
 
-  app.use(express.static('public'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
-  })
-
+  
   app.get('*', function(req, res){
     res.sendFile(__dirname + '/public/index.html')
   })
