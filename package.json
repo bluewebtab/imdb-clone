@@ -60,8 +60,7 @@
     "production": "./node_modules/.bin/webpack -p",
     "watch": "gulp",
     "sass": "gulp styles",
-    "js": "gulp webpack",
-    "server": "nodemon server.js"
+    "js": "gulp webpack"
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1",
