@@ -16,6 +16,10 @@ const movie = require('./routes/api/movie')
 
 const app = express();
 
+
+
+
+
 //Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json())
@@ -41,15 +45,16 @@ app.use('/api/users', users)
 app.use('/api/profile', profile)
 app.use('/api/movie', movie)
 
-app.use("/", serveStatic(path.join(__dirname, "/public")));
+if(process.env.NODE_ENV === 'production'){
+  //Set status folder
+  app.use(express.static('client/build'))
 
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
-});
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
 
 
-
-
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
