@@ -67,9 +67,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "nodemon": "^1.18.4"
   },
-  
-    "engines" : { 
-      "node" : "8.9.4" 
-    }
-  
+  "engines": {
+    "node": "8.9.4"
+  }
 }
