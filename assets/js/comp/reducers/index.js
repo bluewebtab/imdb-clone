@@ -7,6 +7,6 @@ export default combineReducers({
   auth: authReducer,
   errors: errorReducer,
   profile: profileReducer,
-  movies: movieReducer,
+  movies: movieReducer
 
 })

@@ -182,7 +182,7 @@ class MovieProfile extends Component {
        <div className="movieOne">
        <h6 className="movieDate">{movie.release_date}</h6>
        <h3 className="movieName">
-       {movie.title}
+       {movie.title } 
        </h3>
        </div>
        <div >

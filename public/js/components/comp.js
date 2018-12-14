@@ -3088,7 +3088,7 @@ var initialState = {};
 
 var middleware = [_reduxThunk2.default];
 var persistedState = loadFromLocalStorage();
-var store = (0, _redux.createStore)(_reducers2.default, persistedState, (0, _redux.compose)(_redux.applyMiddleware.apply(undefined, middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+var store = (0, _redux.createStore)(_reducers2.default, persistedState, (0, _redux.compose)(_redux.applyMiddleware.apply(undefined, middleware)));
 
 store.subscribe(function () {
   return saveToLocalStorage(store.getState());
